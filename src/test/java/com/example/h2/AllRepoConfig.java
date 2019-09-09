@@ -1,5 +1,6 @@
 package com.example.h2;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
@@ -67,4 +68,18 @@ public class AllRepoConfig {
 		assertTrue(entity.isPresent());
 	}
 	
+	@Test 
+	public void testSave() {
+		String name = "name";
+		String myAddress = "address";
+		OracleEntity entity = new OracleEntity();
+		entity.setName(name);
+		entity.setMyAddress(myAddress);
+		entity = oracleEntityRepository.save(entity);
+		System.out.println("ID generated: " + entity.getId());
+		Optional<OracleEntity> result = oracleEntityRepository.findById(entity.getId());
+		assertTrue(result.isPresent());
+		assertEquals(name, result.get().getName());
+		assertEquals(myAddress, result.get().getMyAddress());
+	}
 }

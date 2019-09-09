@@ -17,7 +17,7 @@ import com.example.h2.oracle.entities.OracleEntity;
 import com.example.h2.oracle.repositories.OracleEntityRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = H2SampleApplication.class)
+@ContextConfiguration(classes = {H2SampleApplication.class})
 public class H2SampleApplicationTests {
 
 	@Autowired
@@ -25,10 +25,6 @@ public class H2SampleApplicationTests {
 	
 	@Autowired
 	OracleEntityRepository oracleEntityRepository;
-	
-	@Test
-	public void contextLoads() {
-	}
 
 	@Test
 	public void testRepositoryMysql() {
@@ -50,19 +46,17 @@ public class H2SampleApplicationTests {
 	
 	@Test
 	public void testRepositoryOracle() {
-		Long id = 1L;
-		String name = "MysqlName";
+		String name = "oraclename";
 		String myAddress = "address";
 		OracleEntity entity = new OracleEntity();
-		entity.setId(id);
 		entity.setName(name);
 		entity.setMyAddress(myAddress);
-		oracleEntityRepository.save(entity);
-		
-		Optional<OracleEntity> result = oracleEntityRepository.findById(1L);
+		entity = oracleEntityRepository.save(entity);
+		System.out.println(entity.getId());
+		Optional<OracleEntity> result = oracleEntityRepository.findById(entity.getId());
 		assertTrue(result.isPresent());
-		assertEquals(id, result.get().getId());
 		assertEquals(name, result.get().getName());
 		assertEquals(myAddress, result.get().getMyAddress());
 	}
+	
 }
