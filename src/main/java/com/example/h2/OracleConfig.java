@@ -57,7 +57,8 @@ public class OracleConfig {
 		transactionManager.setEntityManagerFactory(oracleEntityManager);
 		return transactionManager;
 	}
-	//try to move to testing because it is not used in real app
+	//try to move to testing because it is not used in real app, only for running with h2, 
+	//comment out if testing
 	/*@Bean
 	public DataSourceInitializer oracleDataSourceInitializer() {
 		DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();

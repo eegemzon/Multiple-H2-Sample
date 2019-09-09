@@ -61,7 +61,8 @@ public class MysqlConfig {
 		transactionManager.setEntityManagerFactory(mysqlEntityManager);
 		return transactionManager;
 	}
-	//try to move to testing because it is not used in real app
+	//try to move to testing because it is not used in real app, only for running with h2, 
+		//comment out if testing
 	/*@Primary
 	@Bean
 	public DataSourceInitializer mysqlDataSourceInitializer() {

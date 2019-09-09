@@ -2,7 +2,10 @@ package com.example.h2.oracle.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +13,8 @@ import javax.persistence.Table;
 public class OracleEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "oracle_seq")
+	@SequenceGenerator(name = "oracle_seq", sequenceName = "oracle_seq", allocationSize = 1)
 	private Long id;
 	private String name;
 	@Column(name = "my_address", nullable = false)
