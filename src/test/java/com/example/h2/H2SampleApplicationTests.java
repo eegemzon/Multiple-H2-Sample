@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.h2.include.TestConfig;
@@ -20,6 +21,7 @@ import com.example.h2.oracle.repositories.OracleEntityRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {H2SampleApplication.class})
+@TestPropertySource(locations = "classpath:test.properties")
 public class H2SampleApplicationTests {
 
 	@MockBean

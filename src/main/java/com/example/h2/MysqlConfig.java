@@ -25,7 +25,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@PropertySource({"classpath:application.properties"})
+//@PropertySource({"classpath:application.properties"})
 @EnableJpaRepositories(
 		basePackages = "com.example.h2.mysql.repositories", 
 		entityManagerFactoryRef = "mysqlEntityManager", 
