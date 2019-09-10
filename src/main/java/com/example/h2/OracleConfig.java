@@ -61,7 +61,7 @@ public class OracleConfig {
 	}
 	//try to move to testing because it is not used in real app, only for running with h2, 
 	//comment out if testing
-	@Bean
+	/*@Bean
 	public DataSourceInitializer oracleDataSourceInitializer() {
 		DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
 		dataSourceInitializer.setDataSource(oracleDataSource());
@@ -69,6 +69,6 @@ public class OracleConfig {
 		databasePopulator.addScript(new ClassPathResource("import-oracle.sql"));
 		dataSourceInitializer.setDatabasePopulator(databasePopulator);
 		return dataSourceInitializer;
-	}
+	}*/
 }
 

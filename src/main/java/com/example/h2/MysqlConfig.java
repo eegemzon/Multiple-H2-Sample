@@ -66,7 +66,7 @@ public class MysqlConfig {
 	}
 	//try to move to testing because it is not used in real app, only for running with h2, 
 		//comment out if testing
-	@Primary
+	/*@Primary
 	@Bean
 	public DataSourceInitializer mysqlDataSourceInitializer() {
 		DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
@@ -75,5 +75,5 @@ public class MysqlConfig {
 		databasePopulator.addScript(new ClassPathResource("import-mysql.sql"));
 		dataSourceInitializer.setDatabasePopulator(databasePopulator);
 		return dataSourceInitializer;
-	}
+	}*/
 }
