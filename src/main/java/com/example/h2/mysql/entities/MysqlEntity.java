@@ -1,9 +1,9 @@
 package com.example.h2.mysql.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "mysql_user")
@@ -13,7 +13,8 @@ public class MysqlEntity {
 	private Long id;
 	private String name;
 	
-	@Column(name="my_address", nullable = false)
+	//@Column(name="my_address", nullable = false)
+	@NotNull
 	private String myAddress;
 	
 	public Long getId() {
