@@ -5,11 +5,13 @@ import java.util.HashMap;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -49,6 +51,7 @@ public class MysqlConfig {
 		HashMap<String, Object> properties = new HashMap<>();
 		properties.put("hibernate.hbm2ddl.auto", ddlAuto);
 		properties.put("hibernate.dialect", dialect);
+		properties.put("hibernate.physical_naming_strategy", SpringPhysicalNamingStrategy.class.getName());
 		return builder.dataSource(mysqlDataSource()).properties(properties)
 				.packages("com.example.h2.mysql.entities").persistenceUnit("mysql").build();
 	}
@@ -63,7 +66,7 @@ public class MysqlConfig {
 	}
 	//try to move to testing because it is not used in real app, only for running with h2, 
 		//comment out if testing
-	/*@Primary
+	@Primary
 	@Bean
 	public DataSourceInitializer mysqlDataSourceInitializer() {
 		DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
@@ -72,5 +75,5 @@ public class MysqlConfig {
 		databasePopulator.addScript(new ClassPathResource("import-mysql.sql"));
 		dataSourceInitializer.setDatabasePopulator(databasePopulator);
 		return dataSourceInitializer;
-	}*/
+	}
 }

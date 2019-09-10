@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -46,6 +47,7 @@ public class OracleConfig {
 		HashMap<String, Object> properties = new HashMap<>();
 		properties.put("hibernate.hbm2ddl.auto", ddlAuto);
 		properties.put("hibernate.dialect", dialect);
+		properties.put("hibernate.physical_naming_strategy", SpringPhysicalNamingStrategy.class.getName());
 		return builder.dataSource(oracleDataSource()).properties(properties)
 				.packages("com.example.h2.oracle.entities").persistenceUnit("oracle").build();
 	}
@@ -59,7 +61,7 @@ public class OracleConfig {
 	}
 	//try to move to testing because it is not used in real app, only for running with h2, 
 	//comment out if testing
-	/*@Bean
+	@Bean
 	public DataSourceInitializer oracleDataSourceInitializer() {
 		DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
 		dataSourceInitializer.setDataSource(oracleDataSource());
@@ -67,6 +69,6 @@ public class OracleConfig {
 		databasePopulator.addScript(new ClassPathResource("import-oracle.sql"));
 		dataSourceInitializer.setDatabasePopulator(databasePopulator);
 		return dataSourceInitializer;
-	}*/
+	}
 }
 

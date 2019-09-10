@@ -8,9 +8,11 @@ import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.example.h2.include.TestConfig;
 import com.example.h2.mysql.entities.MysqlEntity;
 import com.example.h2.mysql.repositories.MysqlEntityRepository;
 import com.example.h2.oracle.entities.OracleEntity;
@@ -20,6 +22,9 @@ import com.example.h2.oracle.repositories.OracleEntityRepository;
 @ContextConfiguration(classes = {H2SampleApplication.class})
 public class H2SampleApplicationTests {
 
+	@MockBean
+	TestConfig testConfig;
+	
 	@Autowired
 	MysqlEntityRepository mysqlEntityRepository;
 	
